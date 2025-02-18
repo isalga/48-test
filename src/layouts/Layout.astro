@@ -37,11 +37,13 @@ const { language, textDirection } = I18N;
 
     <!-- Comment the line below to disable View Transitions -->
     <ClientRouter fallback="swap" />
+    <link href="https://actionnetwork.org/css/style-embed-v3.css" rel="stylesheet" type="text/css" />
   </head>
 
   <body class="antialiased text-default bg-page tracking-tight">
     <slot />
-
+    <div class="embed_replace"></div>
+    <div id="can-petition-area-test-473" style="width: 50%"></div>
     <BasicScripts />
   </body>
 </html>
