@@ -1,0 +1,109 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Note from '~/components/widgets/Note.astro';
+import Features from '~/components/widgets/Features.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import Steps from '~/components/widgets/Steps.astro';
+import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
+import Stats from '~/components/widgets/Stats.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import { getTranslations } from '~/i18n/i18n';
+
+// ✅ Import Astro's image utilities
+import { getImage } from 'astro:assets';
+
+// ✅ Import the local hero image
+import heroImageSrc from '~/assets/images/hero-image.jpg';
+
+// ✅ Get `lang` from Astro dynamic params
+const { lang } = Astro.params;
+
+// ✅ Load correct translations
+const t = getTranslations(lang);
+
+// ✅ Define metadata properly
+const metadata = {
+  title: t.welcome, // Uses correct translation
+  description: t.description
+};
+
+// ✅ Define static paths correctly
+export async function getStaticPaths() {
+  return [
+    { params: { lang: "en" } },
+    { params: { lang: "ar" } }
+  ];
+}
+
+// ✅ Process the image to ensure optimization
+const heroImage = await getImage({ src: heroImageSrc });
+---
+
+<!-- ✅ Ensure light mode -->
+<script>
+  document.documentElement.classList.remove('dark');
+  localStorage.setItem('theme', 'light');
+</script>
+
+<Layout metadata={metadata}>
+  <Hero
+    actions={[
+      { variant: 'primary', text: t.donate, href: `/${lang}/donate`, icon: 'tabler:heart' },
+      { text: t.learn_more, href: `/${lang}/features` }
+    ]}
+    image={{ 
+      src: heroImage.src, // ✅ Uses optimized image
+      width: heroImage.width, 
+      height: heroImage.height, 
+      alt: 'Jabalia Hero Image' 
+    }}
+  >
+    <Fragment slot="title">
+      {t.welcome} <span class="text-accent dark:text-white highlight">Jabalia Institute</span>
+    </Fragment>
+    <Fragment slot="subtitle">
+      {t.description}
+    </Fragment>
+  </Hero>
+
+  <Features
+    id="features"
+    tagline={t.features_tagline}
+    title={t.features_title}
+    subtitle={t.features_subtitle}
+    items={[
+      {
+        title: t.features_item1_title,
+        description: t.features_item1_description,
+        icon: 'tabler:brand-tailwind',
+      },
+      {
+        title: t.features_item2_title,
+        description: t.features_item2_description,
+        icon: 'tabler:components',
+      },
+      {
+        title: t.features_item3_title,
+        description: t.features_item3_description,
+        icon: 'tabler:list-check',
+      },
+    ]}
+  />
+
+  <Note />
+  <Features2 title={t.features2_title} subtitle={t.features2_subtitle} tagline={t.features2_tagline} />
+  <Steps title={t.steps_title} />
+  <BlogLatestPosts title={t.blog_title} />
+  <FAQs title={t.faqs_title} />
+  <Stats stats={[
+    { title: t.stats_downloads, amount: '132K' },
+    { title: t.stats_stars, amount: '24.8K' },
+    { title: t.stats_forks, amount: '10.3K' },
+    { title: t.stats_users, amount: '48.4K' }
+  ]} />
+  <CallToAction actions={[
+    { variant: 'primary', text: t.cta_get_template, href: 'https://github.com/onwidget/astrowind', target: '_blank', icon: 'tabler:download' }
+  ]} />
+</Layout>
