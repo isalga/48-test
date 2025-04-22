@@ -1,63 +1,54 @@
----
-import '@fontsource-variable/inter';
 
-// 'DM Sans'
-// Nunito
-// Dosis
-// Outfit
-// Roboto
-// Literata
-// 'IBM Plex Sans'
-// Karla
-// Poppins
-// 'Fira Sans'
-// 'Libre Franklin'
-// Inconsolata
-// Raleway
-// Oswald
-// 'Space Grotesk'
-// Urbanist
----
 
 <style is:inline>
+  /* Import Google Fonts */
+  @import url('https://fonts.googleapis.com/css2?family=Alexandria:wght@700&family=Tajawal:wght@400;500&display=swap');
+
   :root {
-    --aw-font-sans: 'Inter Variable';
-    --aw-font-serif: 'Inter Variable';
-    --aw-font-heading: 'Inter Variable';
+    /* Fonts */
+    --aw-font-sans: 'Tajawal', sans-serif; /* Body text */
+    --aw-font-heading: 'Alexandria', serif; /* Headings */
 
-    --aw-color-primary: rgb(67 110 50);
-    --aw-color-secondary: rgb(117 49 145);
-    --aw-color-accent: rgb(245 113 5);
+    /* Primary Colors */
+    --aw-color-primary: #007350; /* Green */
+    --aw-color-accent: #F04F23;  /* Orange */
+    --aw-color-text-heading: #381E20; /* Deep brown for headings */
+    --aw-color-text-default: #381E20; /* Deep brown for body text */
+    --aw-color-bg-page: #F4EEEE; /* Light grey for page background */
 
-    --aw-color-text-heading: rgb(67 110 50);
-    --aw-color-text-default: rgb(46 31 30);
-    --aw-color-text-muted: rgb(46 31 30);
-    --aw-color-bg-page: rgb(245 236 235);
+    /* Secondary Colors */
+    --aw-color-secondary: #FAAF19; /* Yellow */
+    --aw-color-secondary-2: #ED0677; /* Pink */
+    --aw-color-secondary-3: #92278F; /* Purple */
 
-    --aw-color-bg-page-dark: rgb(245 236 235);
-
+    /* Selection Styling */
     ::selection {
-      background-color: lavender;
+      background-color: #007350; /* Green */
+      color: #F4EEEE; /* Light grey */
     }
   }
 
   .dark {
-    --aw-font-sans: 'Inter Variable';
-    --aw-font-serif: 'Inter Variable';
-    --aw-font-heading: 'Inter Variable';
+    /* Dark Mode Colors */
+    --aw-color-primary: #007350; /* Green */
+    --aw-color-accent: #F04F23;  /* Orange */
+    --aw-color-text-heading: #F4EEEE; /* Light grey for headings */
+    --aw-color-text-default: #F4EEEE; /* Light grey for body text */
+    --aw-color-bg-page: #381E20; /* Deep brown for page background */
 
-    --aw-color-primary: rgb(67 110 50);
-    --aw-color-secondary: rgb(117 49 145);
-    --aw-color-accent: rgb(245 113 5);
-
-    --aw-color-text-heading: rgb(67 110 50);
-    --aw-color-text-default: rgb(46 31 30);
-    --aw-color-text-muted: rgb(46 31 30);
-    --aw-color-bg-page: rgb(245 236 235);
-
+    /* Dark Mode Selection Styling */
     ::selection {
-      background-color: black;
-      color: snow;
+      background-color: #F04F23; /* Orange */
+      color: #381E20; /* Deep brown */
     }
+  }
+
+  /* Apply Fonts Globally */
+  body {
+    font-family: var(--aw-font-sans);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--aw-font-heading);
   }
 </style>
