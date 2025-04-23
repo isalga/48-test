@@ -7,22 +7,35 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: 'var(--aw-color-primary)',
-        secondary: 'var(--aw-color-secondary)',
-        accent: 'var(--aw-color-accent)',
-        default: 'var(--aw-color-text-default)',
-        muted: 'var(--aw-color-text-muted)',
+        // Light Theme Colors
+        primary: 'var(--aw-color-primary)', // Green
+        accent: 'var(--aw-color-accent)',  // Orange
+        'text-heading': 'var(--aw-color-text-heading)', // Deep brown for headings
+        'text-default': 'var(--aw-color-text-default)', // Deep brown for body text
+        'bg-page': 'var(--aw-color-bg-page)', // Light grey for page background
+        secondary: 'var(--aw-color-secondary)', // Yellow
+        'secondary-2': 'var(--aw-color-secondary-2)', // Pink
+        'secondary-3': 'var(--aw-color-secondary-3)', // Purple
+
+        // Dark Theme Colors
+        dark: {
+          primary: 'var(--aw-color-primary)', // Green
+          accent: 'var(--aw-color-accent)',  // Orange
+          'text-heading': 'var(--aw-color-text-heading)', // Light grey for headings
+          'text-default': 'var(--aw-color-text-default)', // Light grey for body text
+          'bg-page': 'var(--aw-color-bg-page)', // Deep brown for page background
+          secondary: 'var(--aw-color-secondary)', // Yellow
+          'secondary-2': 'var(--aw-color-secondary-2)', // Pink
+          'secondary-3': 'var(--aw-color-secondary-3)', // Purple
+        },
       },
       fontFamily: {
-        sans: ['var(--aw-font-sans, ui-sans-serif)', ...defaultTheme.fontFamily.sans],
-        serif: ['var(--aw-font-serif, ui-serif)', ...defaultTheme.fontFamily.serif],
-        heading: ['var(--aw-font-heading, ui-sans-serif)', ...defaultTheme.fontFamily.sans],
+        sans: ['var(--aw-font-sans)', ...defaultTheme.fontFamily.sans], // Body text
+        heading: ['var(--aw-font-heading)', ...defaultTheme.fontFamily.serif], // Headings
       },
-
       animation: {
         fade: 'fadeInUp 1s both',
       },
-
       keyframes: {
         fadeInUp: {
           '0%': { opacity: 0, transform: 'translateY(2rem)' },
@@ -37,5 +50,5 @@ export default {
       addVariant('intersect', '&:not([no-intersect])');
     }),
   ],
-  darkMode: 'class',
+  darkMode: 'class', // Enable dark mode using class strategy
 };
