@@ -2,7 +2,7 @@ site:
   name: '48 Test'
   site: 'https://astrowind.vercel.app'
   base: '/'
-  trailingSlash: false
+  # trailingSlash: false // change to ignore?
 
   googleSiteVerificationId: orcPxI47GSa-cRvY11tUe6iGg2IO_RPvnA1q95iEM3M
 
@@ -28,8 +28,13 @@ metadata:
     cardType: summary_large_image
 
 i18n:
-  language: en
-  textDirection: ltr
+  defaultLang: en
+  languages:
+    - en
+    - ar
+  textDirection:
+    en: ltr
+    ar: rtl
 
 apps:
   blog:
