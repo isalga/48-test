@@ -2,6 +2,8 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 import { defineConfig } from 'astro/config';
+import yaml from 'js-yaml';
+import fs from 'fs';
 
 import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
@@ -15,6 +17,10 @@ import astrowind from './vendor/integration';
 
 import { readingTimeRemarkPlugin, responsiveTablesRehypePlugin, lazyImagesRehypePlugin } from './src/utils/frontmatter';
 
+// ✅ Load YAML config
+const configFilePath = path.resolve('./src/config.yaml');
+const config = yaml.load(fs.readFileSync(configFilePath, 'utf8')) as Record<string, unknown>;
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const hasExternalScripts = false;
@@ -25,7 +31,7 @@ export default defineConfig({
   output: 'static',
   trailingSlash: 'ignore', // ✅ Fix: Allows both /en and /en/ without redirect issues
   site: 'http://localhost:4321', // ✅ Define site URL (change if needed)
-
+  
   integrations: [
     tailwind({
       applyBaseStyles: false,
@@ -49,7 +55,7 @@ export default defineConfig({
         config: { forward: ['dataLayer.push'] },
       })
     ),
-
+    
     compress({
       CSS: true,
       HTML: {
@@ -62,10 +68,10 @@ export default defineConfig({
       SVG: false,
       Logger: 1,
     }),
-
+    
     astrowind({
       config: './src/config.yaml',
-    }),
+    }), // ✅ Ensure correct config path
   ],
 
   image: {
