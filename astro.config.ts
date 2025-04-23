@@ -15,17 +15,11 @@ import type { AstroIntegration } from 'astro';
 
 import astrowind from './vendor/integration';
 
-import { readingTimeRemarkPlugin, responsiveTablesRehypePlugin, lazyImagesRehypePlugin } from './src/utils/frontmatter';
-
 // ✅ Load YAML config
 const configFilePath = path.resolve('./src/config.yaml');
 const config = yaml.load(fs.readFileSync(configFilePath, 'utf8')) as Record<string, unknown>;
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-
-const hasExternalScripts = false;
-const whenExternalScripts = (items: (() => AstroIntegration) | (() => AstroIntegration)[] = []) =>
-  hasExternalScripts ? (Array.isArray(items) ? items.map((item) => item()) : [items()]) : [];
 
 export default defineConfig({
   output: 'static',
@@ -50,11 +44,9 @@ export default defineConfig({
       },
     }),
 
-    ...whenExternalScripts(() =>
-      partytown({
-        config: { forward: ['dataLayer.push'] },
-      })
-    ),
+    partytown({
+      config: { forward: ['dataLayer.push'] },
+    }),
     
     compress({
       CSS: true,
@@ -73,15 +65,6 @@ export default defineConfig({
       config: './src/config.yaml',
     }), // ✅ Ensure correct config path
   ],
-
-  image: {
-    domains: ['cdn.pixabay.com'],
-  },
-
-  markdown: {
-    remarkPlugins: [readingTimeRemarkPlugin],
-    rehypePlugins: [responsiveTablesRehypePlugin, lazyImagesRehypePlugin],
-  },
 
   vite: {
     resolve: {
