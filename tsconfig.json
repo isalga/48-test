@@ -5,9 +5,10 @@
     "allowJs": true,
     "baseUrl": ".",
     "paths": {
-      "~/*": ["src/*"]
+      "~/*": ["src/*"],
+      "@/i18n/*": ["src/i18n/*"]
     }
   },
-  "include": [".astro/types.d.ts", "**/*"],
-  "exclude": ["dist/"]
+  "include": [".astro/types.d.ts", "src", "astro-i18n.config.ts"],
+  "exclude": ["dist/", "node_modules"]
 }
