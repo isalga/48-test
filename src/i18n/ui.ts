@@ -20,13 +20,13 @@ export const ui = {
       'Empowering Jabalia’s future through education, health, and community support—building a rooted, resilient, and liberated community for children, families, and generations to come.',
   },
   ar: {
-    'nav.home': 'Falasteen',
+    'nav.home': 'فلسطين',
     'nav.kindergarden': 'روضة أطفال',
     'nav.communitycenter': 'مركز مجتمعي',
     'nav.twinningFriendshipProgam': 'التوأمة والصداقة',
     welcome: 'مرحبًا بكم في مركز جباليا',
     donate: 'تبرع الآن',
-    learn_more: 'Learn more',
+    learn_more: 'يتعلم أكثر',
     description:
       'تمكين مستقبل جباليا من خلال التعليم، الصحة، ودعم المجتمع—بناء مجتمع متجذر، مرن، ومحرر للأطفال، العائلات، والأجيال القادمة.',
   },
