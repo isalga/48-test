@@ -23,8 +23,14 @@ const whenExternalScripts = (items: (() => AstroIntegration) | (() => AstroInteg
 
 export default defineConfig({
   output: 'static',
-  trailingSlash: 'ignore', // ✅ Fix: Allows both /en and /en/ without redirect issues
-  site: 'http://localhost:4321', // ✅ Define site URL (change if needed)
+  // TODO remove this?
+  // trailingSlash: 'ignore', // ✅ Fix: Allows both /en and /en/ without redirect issues
+  // site: 'http://localhost:4321', // ✅ Define site URL (change if needed)
+
+  i18n: {
+    locales: ['en', 'ar'],
+    defaultLocale: 'en',
+  },
 
   integrations: [
     tailwind({
@@ -35,12 +41,7 @@ export default defineConfig({
     icon({
       include: {
         tabler: ['*'],
-        'flat-color-icons': [
-          'template',
-          'gallery',
-          'approval',
-          'document',
-        ],
+        'flat-color-icons': ['template', 'gallery', 'approval', 'document'],
       },
     }),
 
