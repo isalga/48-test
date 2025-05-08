@@ -9,12 +9,25 @@ import { UI } from 'astrowind:config';
 
   window.basic_script = true;
 
+  function updateLogo(theme) {
+    const logoDark = document.getElementById('logoDark');
+    const logoLight = document.getElementById('logoLight');
+    if (theme === 'dark') {
+      logoDark.style.display = 'block';
+      logoLight.style.display = 'none';
+    } else {
+      logoDark.style.display = 'none';
+      logoLight.style.display = 'block';
+    }
+  }
+
   function applyTheme(theme) {
     if (theme === 'dark') {
       document.documentElement.classList.add('dark');
     } else {
       document.documentElement.classList.remove('dark');
     }
+    updateLogo(theme);
   }
 
   const initTheme = function () {
@@ -70,6 +83,7 @@ import { UI } from 'astrowind:config';
       }
       document.documentElement.classList.toggle('dark');
       localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+      updateLogo(localStorage.theme);
     });
 
     attachEvent('[data-aw-social-share]', 'click', function (_, elem) {
@@ -250,6 +264,7 @@ import { UI } from 'astrowind:config';
   Observer.start();
 
   document.addEventListener('astro:after-swap', () => {
+    console.log(777);
     Observer.start();
   });
 </script>
