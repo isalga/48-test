@@ -1,13 +1,59 @@
 ---
 import Layout from '../../layouts/PageLayout.astro';
 import Hero from '../../components/widgets/Hero.astro';
+import Headline from '~/components/blog/Headline.astro';
+import Features from '~/components/widgets/Features.astro';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+import Stats from '~/components/widgets/Stats.astro';
 
 const metadata = {
   title: 'Palestine Blossoms',
   ignoreTitleTemplate: true,
 };
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const featureItems = [
+  {
+    title: t('programs.kindergarten.title'),
+    description: t('programs.kindergarten.description'),
+    icon: ""
+  },
+  {
+    title: t('programs.community_center.title'),
+    description: t('programs.community_center.description'),
+    icon: ""
+  },
+  {
+    title: t('programs.twinning.title'),
+    description: t('programs.twinning.description'),
+    icon: ""
+  },
+  {
+    title: t('programs.fourth.title'),
+    description: t('programs.fourth.description'),
+    icon: ""
+  }
+];
+
+
+
 ---
 
 <Layout metadata={metadata}>
   <Hero />
+  <Features title={t('features_title')}  subtitle={t('features_subtitle')} items={featureItems}/>
+  <!-- <ItemGrid items={gridItems} /> -->
+  <Stats
+  title="Statistics about us"
+  stats={[
+    { title: 'Offices', amount: '4' },
+    { title: 'Employees', amount: '248' },
+    { title: 'Templates', amount: '12' },
+    { title: 'Awards', amount: '24' },
+  ]}
+/>
+
+  <Headline title={t('headline_title')} subtitle={t('headline_subtitle')} tagline={t('tagline')}  />
 </Layout>
