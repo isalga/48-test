@@ -1,23 +1,20 @@
-import { z, defineCollection } from 'astro:content';
+import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 
+// Shared metadata schema (reused for both posts and albums)
 const metadataDefinition = () =>
   z
     .object({
       title: z.string().optional(),
       ignoreTitleTemplate: z.boolean().optional(),
-
       canonical: z.string().url().optional(),
-
       robots: z
         .object({
           index: z.boolean().optional(),
           follow: z.boolean().optional(),
         })
         .optional(),
-
       description: z.string().optional(),
-
       openGraph: z
         .object({
           url: z.string().optional(),
@@ -35,7 +32,6 @@ const metadataDefinition = () =>
           type: z.string().optional(),
         })
         .optional(),
-
       twitter: z
         .object({
           handle: z.string().optional(),
@@ -46,25 +42,39 @@ const metadataDefinition = () =>
     })
     .optional();
 
+// Posts collection (existing)
 const postCollection = defineCollection({
   loader: glob({ pattern: ['*.md', '*.mdx'], base: 'src/data/post' }),
   schema: z.object({
     publishDate: z.date().optional(),
     updateDate: z.date().optional(),
     draft: z.boolean().optional(),
-
     title: z.string(),
     excerpt: z.string().optional(),
     image: z.string().optional(),
-
     category: z.string().optional(),
     tags: z.array(z.string()).optional(),
     author: z.string().optional(),
-
     metadata: metadataDefinition(),
   }),
 });
 
+// Albums collection (new)
+const albumsCollection = defineCollection({
+  type: "data",
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      description: z.string().optional(),
+      cover: image(),
+      imagesFolder: z.string().optional(),
+      date: z.string().transform((str) => new Date(str)),  // Accept string but convert to Date
+      tags: z.array(z.string()).optional(),
+    }),
+});
+
+// Export both collections
 export const collections = {
   post: postCollection,
+  albums: albumsCollection,
 };

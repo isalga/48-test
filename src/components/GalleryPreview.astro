@@ -1,0 +1,29 @@
+---
+import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
+
+const albums = await getCollection("albums").then(albums => albums.slice(0, 3)); // Get first 3 albums
+---
+
+<section class="py-12 px-4 max-w-7xl mx-auto">
+  <h2 class="text-3xl font-bold text-center mb-8">Our Gallery</h2>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    {albums.map((album) => (
+      <a href={`/gallery/${album.id}`} class="group">
+        <Image
+          src={album.data.cover}
+          alt={album.data.title}
+          width={400}
+          height={300}
+          class="rounded-lg object-cover aspect-video transition-transform group-hover:scale-105"
+        />
+        <h3 class="mt-4 text-xl font-semibold text-center">{album.data.title}</h3>
+      </a>
+    ))}
+  </div>
+  <div class="text-center mt-8">
+    <a href="/gallery" class="inline-block px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary-dark transition-colors">
+      View Full Gallery
+    </a>
+  </div>
+</section>
