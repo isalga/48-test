@@ -1,9 +1,12 @@
 ---
-import { SITE } from 'astrowind:config';
+import { Picture } from 'astro:assets';
+import jabaliaFoundationLogoLight from '../assets/images/logo/full-color/light/jabalia-foundation.svg';
+import jabaliaFoundationLogoDark from '../assets/images/logo/full-color/dark/jabalia-foundation.svg';
 ---
 
 <span
   class="self-center ml-2 rtl:ml-0 rtl:mr-2 text-2xl md:text-xl font-bold text-gray-900 whitespace-nowrap dark:text-white"
 >
-  🌵 {SITE?.name}
+  <span id="logoDark"><Picture class="dark:sl-hidden" src={jabaliaFoundationLogoDark} alt="test" /></span>
+  <span id="logoLight"><Picture class="light:sl-hidden" src={jabaliaFoundationLogoLight} alt="test" /></span>
 </span>
