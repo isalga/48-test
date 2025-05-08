@@ -1,7 +1,12 @@
 ---
 import Layout from '../../layouts/PageLayout.astro';
-import Stats from '../../components/widgets/Stats.astro';
-import CallToAction from '../../components/widgets/CallToAction.astro';
+import HeroText from '../../components/widgets/HeroText.astro';
+import Features3 from '../../components/widgets/Features3.astro';
+
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
 const metadata = {
   title: 'Palestine Blossoms',
@@ -10,6 +15,105 @@ const metadata = {
 ---
 
 <Layout metadata={metadata}>
-  <Stats />
-  <CallToAction />
+  <HeroText>
+    <Fragment slot="title">{t('twinningandfrienship.firstHero.title')}</Fragment>
+    <Fragment slot="subtitle">
+      {t('twinningandfrienship.firstHero.subtitle')}
+    </Fragment>
+  </HeroText>
+
+  <Features3
+    title={t('twinningandfrienship.feature1.title')}
+    columns={2}
+    isBeforeContent={true}
+    items={[
+      {
+        title: 'Twinning Cities',
+        description:
+          'Establishing partnerships with cities in the Global South, Europe, and around the world. This initiative will foster friendship and active solidarity, enabling a productive and impactful exchange of skills, resources, and support between the people of the two cities.',
+        icon: 'tabler:building-community',
+      },
+      {
+        title: 'Community Connections',
+        description:
+          'Facilitating connections between schools, mothers, fathers, the elderly, engineers, teachers, carpenters, and other community members. This will promote mutual understanding and collaboration.',
+        icon: 'tabler:world',
+      },
+    ]}
+  />
+
+  <Features3
+    title={t('twinningandfrienship.feature2.title')}
+    columns={3}
+    isBeforeContent={true}
+    items={[
+      {
+        title: 'Raising Awarenes',
+        description:
+          'Highlighting and raising awareness about the situation in the Gaza Strip and the refugee camps, humanizing the refugee experience beyond the victim narrative.',
+        icon: 'tabler:antenna-bars-5',
+      },
+      {
+        title: 'Building Political Connections',
+        description:
+          'Creating impactful and decolonial political connections, emphasizing that Palestine is not a charity or humanitarian case but a political issue.',
+        icon: 'tabler:affiliate',
+      },
+      {
+        title: 'Supporting Self-Determination',
+        description:
+          'Engaging in the political rights of Palestinians and supporting their collective desire for self-determination and justice.',
+        icon: 'tabler:users-group',
+      },
+    ]}
+  />
+
+  <Features3
+    title={t('twinningandfrienship.feature3.title')}
+    columns={3}
+    isBeforeContent={true}
+    items={[
+      {
+        title: 'Mutual Aid and Support',
+        description: 'Encouraging dignified engagement through mutual aid initiatives that benefit both communities.',
+        icon: 'tabler:antenna-bars-5',
+      },
+      {
+        title: 'Skill and Resource Exchange',
+        description:
+          'Facilitating the exchange of skills and resources between twinned cities to enhance community development.',
+        icon: 'tabler:affiliate',
+      },
+      {
+        title: 'Cultural and Educational Exchanges',
+        description:
+          'Organizing visits and virtual meetings between schools, families, and professionals to share experiences and knowledge.',
+        icon: 'tabler:users-group',
+      },
+      {
+        title: 'Awareness Campaigns',
+        description:
+          'Running campaigns to educate the global community about the realities of life in the Gaza Strip and the refugee camps.',
+        icon: 'tabler:users-group',
+      },
+      {
+        title: 'Political Advocacy',
+        description:
+          'Advocating for the political rights of Palestinians and promoting their right to self-determination.',
+        icon: 'tabler:users-group',
+      },
+    ]}
+  />
+
+  <HeroText>
+    <Fragment slot="subtitle">
+      {t('twinningandfrienship.secondHero.subtitle')}
+    </Fragment>
+  </HeroText>
+
+  <HeroText>
+    <Fragment slot="subtitle">
+      {t('twinningandfrienship.thirdHero.subtitle')}
+    </Fragment>
+  </HeroText>
 </Layout>
