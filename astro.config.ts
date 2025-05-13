@@ -23,9 +23,6 @@ const whenExternalScripts = (items: (() => AstroIntegration) | (() => AstroInteg
 
 export default defineConfig({
   output: 'static',
-  // TODO remove this?
-  // trailingSlash: 'ignore', // ✅ Fix: Allows both /en and /en/ without redirect issues
-  // site: 'http://localhost:4321', // ✅ Define site URL (change if needed)
 
   i18n: {
     locales: ['en', 'ar'],

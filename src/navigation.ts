@@ -1,29 +1,27 @@
-import { getPermalink, getBlogPermalink, getAsset } from './utils/permalinks';
+import { getPermalink, getAsset } from './utils/permalinks';
+import { getLangFromUrl, useTranslations } from './i18n/utils';
 
-export const headerData = {
-  links: [
-    {
-      text: 'Initiative 1',
-      href: getPermalink('/homes/saas'),
-    },
-    {
-      text: 'Initiative 2',
-      href: getPermalink('/#features'),
-    },
-    {
-      text: 'Initiative 3',
-      href: getPermalink('/landing/lead-generation'),
-    },
-    {
-      text: 'Initiative 4',
-      href: getBlogPermalink(),
-    },
-    {
-      text: 'Initiative 5',
-      href: '#',
-    },
-  ],
-  actions: [{ text: 'Donate', href: '', target: '_blank' }],
+export const headerData = (Astro) => {
+  const lang = getLangFromUrl(Astro.url);
+  const t = useTranslations(lang);
+
+  return {
+    links: [
+      {
+        text: t('nav.kindergarden'),
+        href: getPermalink(lang + '/kindergarden'),
+      },
+      {
+        text: t('nav.communitycenter'),
+        href: getPermalink(lang + '/communitycenter'),
+      },
+      {
+        text: t('nav.twinningFriendshipProgam'),
+        href: getPermalink(lang + '/twinningFriendshipProgam'),
+      },
+    ],
+    actions: [{ text: 'Donate', href: '', target: '_blank' }],
+  };
 };
 
 export const footerData = {
