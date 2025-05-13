@@ -25,8 +25,6 @@ export const GET = async () => {
       description: post.excerpt,
       pubDate: post.publishDate,
     })),
-
-    trailingSlash: SITE.trailingSlash,
   });
 
   return new Response(rss, {

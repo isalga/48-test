@@ -14,14 +14,11 @@
         "base": {
           "type": "string"
         },
-        "trailingSlash": {
-          "type": "boolean"
-        },
         "googleSiteVerificationId": {
           "type": "string"
         }
       },
-      "required": ["name", "site", "base", "trailingSlash"],
+      "required": ["name", "site", "base"],
       "additionalProperties": false
     },
     "metadata": {
