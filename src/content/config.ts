@@ -62,11 +62,10 @@ const postCollection = defineCollection({
 // Albums collection (new)
 const albumsCollection = defineCollection({
   type: "data",
-  schema: ({ image }) =>
-    z.object({
+  schema: z.object({
       title: z.string(),
       description: z.string().optional(),
-      cover: image(),
+      cover: z.string().optional(),
       imagesFolder: z.string().optional(),
       date: z.string().transform((str) => new Date(str)),  // Accept string but convert to Date
       tags: z.array(z.string()).optional(),
