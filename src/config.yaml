@@ -1,29 +1,29 @@
 site:
   name: 'Palestine Blossoms'
-  site: 'https://astrowind.vercel.app'
+  site: 'https://48-test.vercel.app'
   base: '/'
 
-  googleSiteVerificationId: orcPxI47GSa-cRvY11tUe6iGg2IO_RPvnA1q95iEM3M
+  googleSiteVerificationId: ''
 
 # Default SEO metadata
 metadata:
   title:
     default: 'Palestine Blossoms'
-    template: '%s — AstroWind'
-  description: "\U0001F680 Suitable for Startups, Small Business, Sass Websites, Professional Portfolios, Marketing Websites, Landing Pages & Blogs."
+    template: ''
+  description: "Palestine Blossoms plays a vital role in supporting the community in the Jabalia refugee camp and the other refugees’ camps in the other seven refugees’ camps in the Gaza Strip"
   robots:
     index: true
     follow: true
   openGraph:
     site_name: 'Palestine Blossoms'
     images:
-      - url: '~/assets/images/default.png'
+      - url: '~/assets/images/logo/palestine-blossoms-society-provisional.png'
         width: 1200
         height: 628
     type: website
   twitter:
-    handle: '@onwidget'
-    site: '@onwidget'
+    handle: '@palestineblossoms'
+    site: '@palestineblossoms'
     cardType: summary_large_image
 
 i18n:
