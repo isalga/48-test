@@ -1,0 +1,43 @@
+---
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const albums = await getCollection('album');
+  return albums.map((album) => ({
+    params: { id: album.id },
+    props: { album },
+  }));
+}
+
+const { album } = Astro.props;
+---
+
+<Layout>
+  <div class="text-center my-16 mb-32 max-w-6xl mx-auto">
+    <h1 class="text-3xl xl:text-6xl font-bold">{album.data.title}</h1>
+    <p class="text-lg xl:text-2xl my-4">{album.data.description}</p>
+
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 my-8">
+      {
+        album.data.images.map((image) => (
+          <a target="_blank" rel="noopener noreferrer" class="group transition-all hover:scale-105">
+            <Image
+              src={image}
+              alt="TODO define alt text"
+              width={400}
+              height={400}
+              class="rounded-lg object-cover aspect-square"
+              loading="lazy"
+            />
+          </a>
+        ))
+      }
+    </div>
+
+    <p class="text-lg my-4 text-center">
+      <a href="/" class="text-primary hover:underline"> ← Back to Home page </a>
+    </p>
+  </div>
+</Layout>; ---
