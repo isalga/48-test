@@ -1,13 +1,167 @@
 ---
-import Layout from '../../layouts/PageLayout.astro';
-import Note from '../../components/widgets/Note.astro';
+import Features3 from '~/components/widgets/Features3.astro';
+// import Hero from '~/components/widgets/Hero.astro';
+// import Stats from '~/components/widgets/Stats.astro';
+import Steps2 from '~/components/widgets/Steps2.astro';
+import Layout from '~/layouts/PageLayout.astro';
+import Image from 'astro/components/Image.astro';
+import heroImageReference from '~/assets/images/hero-image.jpg';
+import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
+
+
 
 const metadata = {
-  title: 'Palestine Blossoms',
-  ignoreTitleTemplate: true,
+  title: 'About us',
 };
 ---
 
 <Layout metadata={metadata}>
-  <Note />
+
+  <!-- Features3 Widget ************** -->
+
+  <Features3
+    title="Kindergarten Programs"
+    subtitle="Establishing kindergartens to provide early childhood education, focusing on cognitive, social, and emotional development. 0-8y"
+    columns={3}
+    isBeforeContent={true}
+    items={[
+      {
+        title: 'Educational',
+        description:
+          'Morbi faucibus luctus quam, sit amet aliquet felis tempor id. Cras augue massa, ornare quis dignissim a, molestie vel nulla.',
+        icon: 'tabler:template',
+      },
+      {
+        title: 'Teacher Training',
+        description:
+          'Offering training programs for kindergarten teachers to ensure high-quality education and effective teaching methods.',
+        icon: 'tabler:template',
+      },
+      {
+        title: 'Educational Materials',
+        description:
+          'Providing age-appropriate educational materials and resources to enhance learning experiences.',
+        icon: 'tabler:template',
+      },
+    ]}
+  />
+
+  <div class="relative m-auto max-w-5xl">
+    <Image
+      class="mx-auto rounded-md w-full"
+      widths={[400, 768, 1024, 2040]}
+      sizes="(max-width: 767px) 400px, (max-width: 1023px) 768px, (max-width: 2039px) 1024px, 2040px"
+      loading="eager"
+      width={1024}
+      height={576}
+      src={heroImageReference}
+      alt="Jabalia Hero Image"
+    />
+  </div>
+
+
+  <!-- Features3 Widget ************** -->
+
+  <!-- <Features3
+    columns={3}
+    isAfterContent={true}
+    items={[
+      {
+        title: 'E-commerce',
+        description:
+          'Rutrum non odio at vehicula. Proin ipsum justo, dignissim in vehicula sit amet, dignissim id quam. Sed ac tincidunt sapien.',
+        icon: 'tabler:template',
+      },
+      {
+        title: 'Blog',
+        description:
+          'Nullam efficitur volutpat sem sed fringilla. Suspendisse et enim eu orci volutpat laoreet ac vitae libero.',
+        icon: 'tabler:template',
+      },
+      {
+        title: 'Business',
+        description:
+          'Morbi et elit finibus, facilisis justo ut, pharetra ipsum. Donec efficitur, ipsum quis congue luctus, mauris magna.',
+        icon: 'tabler:template',
+      },
+      {
+        title: 'Branding',
+        description:
+          'Suspendisse vitae nisi eget tortor luctus maximus sed non lectus. Cras malesuada pretium placerat. Nullam venenatis dolor a ante rhoncus.',
+        icon: 'tabler:template',
+      },
+      {
+        title: 'Medical',
+        description:
+          'Vestibulum malesuada lacus id nibh posuere feugiat. Nam volutpat nulla a felis ultrices, id suscipit mauris congue. In hac habitasse platea dictumst.',
+        icon: 'tabler:template',
+      },
+      {
+        title: 'Fashion Design',
+        description:
+          'Maecenas eu tellus eget est scelerisque lacinia et a diam. Aliquam velit lorem, vehicula id fermentum et, rhoncus et purus.',
+        icon: 'tabler:template',
+      },
+    ]}
+   
+  /> -->
+
+  <!-- Steps2 Widget ****************** -->
+
+  <Steps2
+    title="Our values"
+    subtitle="Maecenas eu tellus eget est scelerisque lacinia et a diam. Aliquam velit lorem, vehicula id fermentum et, rhoncus et purus. Nulla facilisi. Vestibulum malesuada lacus."
+    items={[
+      {
+        title: 'Create spaces',
+        description:
+          'Create spaces that are resilient to systemic targeting of zionists.',
+      },
+      {
+        title: 'Preserve grandma wisdom',
+        description:
+          'Preserve older generations stories while building a legacy for the future',
+      },
+      {
+        title: 'Empowerment',
+        description:
+          'Empower the next generation with infrastructure and opportunities',
+      },
+    ]}
+  />
+
+  <!-- Steps2 Widget ****************** -->
+
+  <Steps2
+    title="Why are we doing this"
+    subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mi risus tempus nulla, sed porttitor est nibh at nulla."
+    isReversed={true}
+    callToAction={{
+      text: 'See more',
+      href: '/',
+    }}
+    items={[
+      {
+        title: 'Family and community as the heart of the effort',
+        description: 'Nam malesuada urna in enim imperdiet tincidunt. Phasellus non tincidunt nisi, at elementum mi.',
+        icon: 'tabler:globe',
+      },
+      {
+        title: 'Decolonizing humanitarian aid and restoring agency to Palestinians',
+        description:
+          'Cras semper nulla leo, eget laoreet erat cursus sed. Praesent faucibus massa in purus iaculis dictum.',
+        icon: 'tabler:message-star',
+      },
+      {
+        title: 'Build something sustainable, meaningful, and deeply rooted in Jabalia',
+        description:
+          'Phasellus lacinia cursus velit, eu malesuada magna pretium eu. Etiam aliquet tellus purus, blandit lobortis ex rhoncus vitae.',
+        icon: 'tabler:award',
+      },
+    ]}
+  />
+
+
+ 
+  <BlogLatestPosts />
 </Layout>
