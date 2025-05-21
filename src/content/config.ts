@@ -65,6 +65,19 @@ const postCollection = defineCollection({
   }),
 });
 
+const albumCollection = defineCollection({
+  loader: glob({ pattern: ['*.md', '*.mdx'], base: 'src/data/album' }),
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      description: z.string().optional(),
+      cover: image(),
+      images: z.array(image()),
+      tags: z.array(z.string()).optional(),
+    }),
+});
+
 export const collections = {
   post: postCollection,
+  album: albumCollection,
 };
